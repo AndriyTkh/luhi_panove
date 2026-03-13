@@ -64,11 +64,6 @@ npm test
 
 ## API Endpoints
 
-### Authentication
-- `GET /auth/google` - Ініціювати Google OAuth
-- `GET /auth/google/callback` - OAuth callback
-- `POST /auth/logout` - Logout
-
 ### Ideas
 - `POST /ideas` - Створити нову ідею
 - `GET /ideas` - Отримати всі ідеї користувача

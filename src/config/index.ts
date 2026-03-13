@@ -46,8 +46,10 @@ function validateConfig(): void {
   }
 }
 
-// Validate configuration on module load (fail-fast)
-validateConfig();
+// Validate configuration on module load (fail-fast), but skip in test environment
+if (process.env.NODE_ENV !== 'test') {
+  validateConfig();
+}
 
 // Export validated configuration object
 const config: Config = {

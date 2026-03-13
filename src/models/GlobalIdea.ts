@@ -1,7 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface IGlobalIdea extends Document {
-  date: Date;
+  date: string;
   title: string;
   description: string;
   examples: string[];
@@ -12,7 +12,7 @@ export interface IGlobalIdea extends Document {
 const GlobalIdeaSchema = new Schema<IGlobalIdea>(
   {
     date: {
-      type: Date,
+      type: String,
       required: true,
       unique: true,
       index: true,

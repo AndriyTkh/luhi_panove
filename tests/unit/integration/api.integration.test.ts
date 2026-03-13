@@ -346,7 +346,7 @@ describe('API Integration Tests', () => {
       const cookies = response1.headers['set-cookie'];
 
       // Use same cookie for second request
-      const response2 = await request(app)
+      await request(app)
         .post('/ideas')
         .set('Cookie', cookies)
         .send({ title: 'Idea 2', description: 'Description 2' })

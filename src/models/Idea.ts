@@ -107,6 +107,14 @@ const IdeaSchema = new Schema<IIdea>(
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+      transform: (_doc, ret: any) => {
+        ret._id = ret._id;
+        delete ret.__v;
+        return ret;
+      },
+    },
   }
 );
 

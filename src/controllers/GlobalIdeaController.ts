@@ -29,6 +29,9 @@ export class GlobalIdeaController {
     // Get global idea for current date
     const globalIdea = await this.globalIdeaService.getIdeaForDate(currentDate);
 
+    // console.log(globalIdea);
+    
+
     // Return 404 if no idea exists for current date
     if (!globalIdea) {
       throw new NotFoundError('No global idea found for today');
