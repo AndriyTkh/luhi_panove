@@ -34,3 +34,7 @@ coverage/
 
 #kiro
 .kiro
+tests/unit/integration/api.integration.test.ts
+tests/unit/services/auth.service.test.ts
+tests/unit/services/gemini.service.test.ts
+tests/unit/services/idea.service.test.ts
