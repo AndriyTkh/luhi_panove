@@ -1,0 +1,3 @@
+# Property-based tests directory
+# This directory will contain property-based tests using fast-check
+# Each test should reference the corresponding property from the design document
