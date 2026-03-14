@@ -168,8 +168,4 @@ export interface ImprovedIdea {
   description: string;
   plan: string[];
   ranking: Ranking;
-  verdict?: {
-    shortFeedback: string;
-    adviceAndDescription: string;
-  };
 }
