@@ -21,9 +21,9 @@ export class IdeaController {
   }
 
   /**
-   * Create a new idea with initial iteration
+   * Create a new idea with initial iteration, then immediately improve it via Gemini AI
    * POST /ideas
-   * Requirements: 3.1, 3.4
+   * Requirements: 3.1, 3.4, 6.1, 6.6
    */
   async createIdea(req: AuthenticatedRequest, res: Response): Promise<void> {
     // Validate request body
@@ -38,8 +38,20 @@ export class IdeaController {
     // Create idea with initial iteration
     const idea = await this.ideaService.createIdea(userId, title, description);
 
+    // Immediately improve the idea using Gemini AI
+    const latestIteration = idea.iterations[idea.iterations.length - 1];
+    const improvedIdea = await this.geminiService.improveIdea(latestIteration);
+
+    // Add improved iteration
+    const updatedIdea = await this.ideaService.addIteration(idea._id.toString(), {
+      title: improvedIdea.title,
+      description: improvedIdea.description,
+      plan: improvedIdea.plan,
+      ranking: improvedIdea.ranking,
+    });
+
     // Format response
-    const response = this.formatIdeaResponse(idea);
+    const response = this.formatIdeaResponse(updatedIdea);
 
     res.status(201).json(response);
   }

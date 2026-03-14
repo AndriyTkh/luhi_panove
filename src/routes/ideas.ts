@@ -50,16 +50,6 @@ router.delete('/:id', validateIdeaId, (req: Request, res: Response, next: NextFu
 });
 
 /**
- * POST /ideas/:id/improve
- * Improve an idea using Gemini AI
- * Requirements: 6.1, 6.6
- * Note: Auth middleware is applied globally in app.ts
- */
-router.post('/:id/improve', validateIdeaId, (req: Request, res: Response, next: NextFunction) => {
-  ideaController.improveIdea(req as any, res).catch(next);
-});
-
-/**
  * PATCH /ideas/:id/iterations/:version
  * Edit a specific iteration of an idea
  * Requirements: 7.1
